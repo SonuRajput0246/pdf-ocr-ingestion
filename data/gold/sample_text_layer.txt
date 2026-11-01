@@ -1,0 +1,40 @@
+--- page 1 ---
+Synthetic Community Health Study Protocol
+
+1. Purpose
+
+This synthetic document exists only to exercise PDF text extraction and OCR. It describes a fictional community health study and contains no real participant, client or protocol data. The text is intentionally ordinary so that extraction quality can be compared with a known reference.
+
+2. Study design
+
+The fictional study is a two-site, cross-sectional survey of household water storage practices. Adults aged eighteen years or older are invited to complete a short questionnaire during a routine community visit. The survey has no intervention, no biological sample collection and no follow-up visit.
+
+3. Participant selection
+
+Participants are selected through a simple random sample of households in two fictional districts. Exclusion criteria are limited to people who cannot provide informed consent. The sample size is fixed at four hundred households, with an equal allocation between the two sites.
+
+--- page 2 ---
+4. Consent procedure
+
+A trained field worker reads the information sheet aloud and answers questions before any data are recorded. Consent is documented with a signature or a witnessed thumbprint. Participation is voluntary and can be stopped at any time without affecting access to routine services.
+
+5. Data protection
+
+Paper forms are stored in a locked cabinet at each site. Electronic records use study codes rather than names. The linkage file is held separately by the site coordinator and is available only to the named investigators. Data are retained for five years after the end of the fictional study.
+
+6. Risks and benefits
+
+The expected risk is limited to the time needed to complete the questionnaire. There is no direct individual benefit. The fictional study may help the district plan water-storage advice, but no participant should expect a personal benefit from taking part.
+
+--- page 3 ---
+7. Data management
+
+Each completed form is checked for missing values before it leaves the site. Double entry is used for the first fifty forms, after which a ten percent random sample is verified. Discrepancies are resolved against the paper form by the site coordinator.
+
+8. Community considerations
+
+The fictional districts are invited to comment on the questionnaire wording before fieldwork begins. A community liaison point is available during the survey. Results will be summarised in a short plain-language note for local health committees.
+
+9. Approval and contact
+
+This synthetic protocol is not a real ethics submission. It exists only as demo data for the PDF and OCR ingestion pipeline. Any resemblance to a real study is coincidental. The named contact is the demo maintainer.

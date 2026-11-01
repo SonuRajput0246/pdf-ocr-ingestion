@@ -1,0 +1,25 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATA_DIR: /app/.data
+      OCR_LANGUAGE: eng
+      OCR_DPI: "200"
+      MAX_UPLOAD_MB: "50"
+    volumes:
+      - ./.data:/app/.data
+      - ./data:/app/data:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
