@@ -7,6 +7,7 @@ import os
 import re
 import shutil
 import threading
+import time
 from pathlib import Path
 from typing import Any
 
@@ -188,7 +189,20 @@ class FileJobStore:
         path = self.job_dir(tenant_id, application_id, job_id)
         if not path.exists():
             raise JobNotFound(f"Job {job_id} was not found")
-        shutil.rmtree(path)
+
+        # On Windows, an open download response can briefly keep an export
+        # file locked after the client has consumed it.  Retry a few times
+        # instead of returning a 500 for a deletion that is otherwise valid.
+        for attempt in range(10):
+            try:
+                shutil.rmtree(path)
+                return
+            except FileNotFoundError:
+                return
+            except PermissionError:
+                if attempt == 9:
+                    raise
+                time.sleep(0.05 * (attempt + 1))
 
     # ------------------------------------------------------------------
     # Layout and pages

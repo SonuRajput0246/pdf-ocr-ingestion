@@ -4,8 +4,9 @@ from __future__ import annotations
 
 import math
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Mapping
+from typing import Any
 
 import fitz
 
@@ -42,7 +43,7 @@ class FurnitureProfile:
         }
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "FurnitureProfile":
+    def from_dict(cls, data: Mapping[str, Any]) -> FurnitureProfile:
         return cls(
             keys=tuple(str(key) for key in data.get("keys", [])),
             margin=float(data.get("margin", 72.0)),

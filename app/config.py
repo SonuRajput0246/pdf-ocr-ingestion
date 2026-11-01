@@ -93,7 +93,7 @@ class Settings:
             raise ValueError("FURNITURE_THRESHOLD must be between 0.1 and 1.0")
 
     @classmethod
-    def from_env(cls) -> "Settings":
+    def from_env(cls) -> Settings:
         return cls(
             data_dir=Path(os.getenv("DATA_DIR", ".data")),
             max_upload_mb=_env_int("MAX_UPLOAD_MB", 50),
@@ -116,5 +116,5 @@ class Settings:
             log_level=os.getenv("LOG_LEVEL", "INFO"),
         )
 
-    def with_overrides(self, **kwargs: object) -> "Settings":
+    def with_overrides(self, **kwargs: object) -> Settings:
         return replace(self, **kwargs)

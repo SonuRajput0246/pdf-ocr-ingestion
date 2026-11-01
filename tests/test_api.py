@@ -72,9 +72,10 @@ def test_ingest_and_read_endpoints(api, tmp_path):
     assert response.status_code == 200
     assert response.get_json()["total"] == 1
 
-    response = client.get(f"/jobs/{job_id}/exports/result.json{_query()}")
-    assert response.status_code == 200
-    assert response.get_json()["job"]["job_id"] == job_id
+    export_response = client.get(f"/jobs/{job_id}/exports/result.json{_query()}")
+    assert export_response.status_code == 200
+    assert export_response.get_json()["job"]["job_id"] == job_id
+    export_response.close()
 
     response = client.delete(f"/jobs/{job_id}{_query()}")
     assert response.status_code == 204

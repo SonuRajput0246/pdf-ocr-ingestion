@@ -20,7 +20,7 @@ from .errors import (
     JobNotFound,
     OCREngineUnavailable,
 )
-from .models import JobOptions, JobRecord, TERMINAL_JOB_STATUSES
+from .models import TERMINAL_JOB_STATUSES, JobOptions, JobRecord
 from .ocr import TesseractOCREngine
 from .service import IngestionService
 from .store import FileJobStore, validate_identifier

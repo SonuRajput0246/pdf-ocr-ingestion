@@ -37,16 +37,16 @@ def assess_text(
             char_count,
             alnum_ratio,
         )
+    replacement_ratio = stripped.count("\ufffd") / char_count
+    if replacement_ratio > 0.05:
+        return TextQuality(
+            False, "replacement_characters", char_count, alnum_ratio
+        )
     if alnum_ratio < min_alnum_ratio:
         return TextQuality(
             False,
             f"low_alnum_ratio:{alnum_ratio:.2f}<{min_alnum_ratio}",
             char_count,
             alnum_ratio,
-        )
-    replacement_ratio = stripped.count("\ufffd") / char_count
-    if replacement_ratio > 0.05:
-        return TextQuality(
-            False, "replacement_characters", char_count, alnum_ratio
         )
     return TextQuality(True, "ok", char_count, alnum_ratio)

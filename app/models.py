@@ -6,9 +6,10 @@ import dataclasses
 import hashlib
 import json
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
-from typing import Any, Mapping
+from datetime import UTC, datetime
+from typing import Any
 
 TERMINAL_JOB_STATUSES = {"completed", "completed_with_errors"}
 
@@ -16,7 +17,7 @@ TERMINAL_JOB_STATUSES = {"completed", "completed_with_errors"}
 def utc_now() -> str:
     """Return an ISO-8601 UTC timestamp with a trailing ``Z``."""
 
-    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
 def sha256_text(text: str) -> str:
@@ -75,7 +76,7 @@ class JobOptions:
         return dataclasses.asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "JobOptions":
+    def from_dict(cls, data: Mapping[str, Any]) -> JobOptions:
         names = {item.name for item in dataclasses.fields(cls)}
         return cls(**{key: value for key, value in data.items() if key in names})
 
@@ -117,7 +118,7 @@ class JobRecord:
         return dataclasses.asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "JobRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> JobRecord:
         names = {item.name for item in dataclasses.fields(cls)}
         return cls(**{key: value for key, value in data.items() if key in names})
 
@@ -165,7 +166,7 @@ class PageRecord:
         return dataclasses.asdict(self)
 
     @classmethod
-    def from_dict(cls, data: Mapping[str, Any]) -> "PageRecord":
+    def from_dict(cls, data: Mapping[str, Any]) -> PageRecord:
         names = {item.name for item in dataclasses.fields(cls)}
         return cls(**{key: value for key, value in data.items() if key in names})
 
